@@ -16,6 +16,18 @@ app.get("/", (req, res) => {
   res.sendFile(join(__dirname, "index.html"));
 });
 
+// Listen to connection from client
+io.on("connection", (socket) => {
+  console.log("A user is Connected");
+  //   emit a message to the client
+  socket.emit("messageFromServer", "Hello From the serve");
+  // Listen a message from the server
+  socket.on("messageFromClient", (message) => {
+    console.log("Message received from Client", message);
+  });
+  //   socket.on();
+});
+
 // start the server
 server.listen(PORT, () => {
   console.log(`Server running on port http://localhost${PORT}`);
