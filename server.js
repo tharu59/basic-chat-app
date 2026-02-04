@@ -27,6 +27,11 @@ io.on("connection", (socket) => {
     // Broadcast the message to all the connected clients except the sender
     socket.broadcast.emit("messageFromServer", message);
   });
+  // Acknowledgement
+  //  send greeting with acknowledgement
+  socket.emit("greeting", "Hey there! Welcome to the server", (response) => {
+    console.log("The Client has received the message", response);
+  });
 });
 
 // start the server

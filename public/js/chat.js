@@ -31,3 +31,14 @@ function sendMessage() {
 }
 
 sendButton.addEventListener("click", sendMessage);
+
+// Handle server greeting with acknowledgement
+socket.on("greeting", (message, callback) => {
+  console.log("Received greeting", message);
+  // send acknowledgement
+  callback({
+    status: "received",
+    message: "Thanks for the greeting",
+    timestamp: new Date(),
+  });
+});
