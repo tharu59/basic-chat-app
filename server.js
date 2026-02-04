@@ -24,8 +24,9 @@ io.on("connection", (socket) => {
   // Listen a message from the server
   socket.on("messageFromClient", (message) => {
     console.log("Message received from Client", message);
+    // Broadcast the message to all the connected clients except the sender
+    socket.broadcast.emit("messageFromServer", message);
   });
-  //   socket.on();
 });
 
 // start the server
