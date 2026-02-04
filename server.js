@@ -20,7 +20,7 @@ app.get("/", (req, res) => {
 io.on("connection", (socket) => {
   console.log("A user is Connected");
   //   emit a message to the client
-  socket.emit("messageFromServer", "Hello From the serve");
+  socket.emit("messageFromServer", "Hello From the tharun's server");
   // Listen a message from the server
   socket.on("messageFromClient", (message) => {
     console.log("Message received from Client", message);
